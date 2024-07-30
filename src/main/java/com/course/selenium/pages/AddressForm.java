@@ -23,14 +23,18 @@ public class AddressForm {
     @FindBy (css = "#field-postcode")
     WebElement postalCode;
 
-    @FindBy (xpath = "//*[@id=\"field-id_country\"]/option")
-    List<WebElement> countryField;
+    @FindBy (css = "#field-id_country")
+    WebElement countryField;
 
     @FindBy (css = "#field-phone")
     WebElement phoneField;
 
-    @FindBy (name = "submitAddress")
+    @FindBy (xpath = "//footer/button")
     WebElement saveButton;
+
+    @FindBy (xpath = "//ul/li[text()='Address successfully added!']")
+    WebElement successMessage;
+
 
     public AddressForm(WebDriver driver){
         this.driver = driver;
@@ -61,12 +65,10 @@ public class AddressForm {
     }
 
     public void selectCountryInField(String country) {
-        for (WebElement countries : countryField) {
-            if (countries.getText().contains(country)) {
-                countries.click();
-                break;
-            }
-        }
+        countryField.click();
+        String expression = String.format("//option[text()='%s']", country);
+        WebElement category = driver.findElement(By.xpath(expression));
+        category.click();
     }
 
     public void typePhoneIntoField (String phone){
@@ -78,4 +80,5 @@ public class AddressForm {
     public void clickSaveButton(){
         saveButton.click();
     }
+
 }

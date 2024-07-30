@@ -52,10 +52,6 @@ public class ManageAddressesSteps {
         addressForm.clickSaveButton();
     }
 
-    @Then("the new address should be added")
-    public void theNewAddressShouldBeAdded() {
-    }
-
     @And("the page should display message {string}")
     public void thePageShouldDisplayMessage(String arg0) {
     }

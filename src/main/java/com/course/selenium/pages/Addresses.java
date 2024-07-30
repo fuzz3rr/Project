@@ -19,4 +19,8 @@ public class Addresses {
     public void clickCreateNewAddress(){
         createNewAddressButton.click();
     }
+
+    public void addressAddedMessage(String msg){
+
+    }
 }

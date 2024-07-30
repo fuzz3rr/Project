@@ -10,10 +10,9 @@ Feature: Managing user addresses
     And the user clicks addresses button
     And the user user clicks Create new address
     And the user fills the form with "<alias>", "<address>", "<city>", "<postalCode>", "<country>", "<phone>" and saves
-    Then the new address should be added
     And the page should display message "Address successfully added!"
     Examples:
       | email                        | password |alias | address | city | postalCode | country | phone |
-      | ummdxgrujcboqmncgm@hthlm.com | 123321 |alias1 | address1 | city1 | postalCode1 | United Kingdom| phone1 |
+      | ummdxgrujcboqmncgm@hthlm.com | 123321 |alias1 | address1 | city1 | postalCode1 | United Kingdom| 123123123   |
 
 
