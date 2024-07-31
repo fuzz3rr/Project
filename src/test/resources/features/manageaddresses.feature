@@ -8,8 +8,9 @@ Feature: Managing user addresses
     Given the user is on the authentication page
     When the user types "<email>" and "<password>" and clicks sign in button
     And the user clicks addresses button
-    And the user user clicks Create new address
-    And the user fills the form with "<alias>", "<address>", "<city>", "<postalCode>", "<country>", "<phone>" and saves
+    And the user clicks Create new address
+    And the user fills the form with "<alias>", "<address>", "<city>", "<postalCode>", "<country>", "<phone>"
+    Then the user saves
     And the page should display message "Address successfully added!"
     Examples:
       | email                        | password |alias | address | city | postalCode | country | phone |

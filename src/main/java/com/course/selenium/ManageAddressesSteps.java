@@ -6,11 +6,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 public class ManageAddressesSteps {
     private final WebDriver driver = BrowserFactory.getDriver();
-
 
     @Given("the user is on the authentication page")
     public void theUserIsOnTheAuthenticationPage() {
@@ -34,14 +34,14 @@ public class ManageAddressesSteps {
         myAccount.clickIntoAddresses();
     }
 
-    @And("the user user clicks Create new address")
-    public void theUserUserClicksCreateNewAddress() {
+    @And("the user clicks Create new address")
+    public void theUserClicksCreateNewAddress() {
         Addresses addresses = new Addresses(driver);
         addresses.clickCreateNewAddress();
     }
 
-    @And("the user fills the form with {string}, {string}, {string}, {string}, {string}, {string} and saves")
-    public void theUserFillsTheFormWithAndSaves(String alias, String address, String city, String postalCode, String country, String phone){
+    @And("the user fills the form with {string}, {string}, {string}, {string}, {string}, {string}")
+    public void theUserFillsTheFormWith(String alias, String address, String city, String postalCode, String country, String phone) {
         AddressForm addressForm = new AddressForm(driver);
         addressForm.typeAliasIntoForm(alias);
         addressForm.typeAddressIntoForm(address);
@@ -49,11 +49,17 @@ public class ManageAddressesSteps {
         addressForm.typePostalCodeIntoForm(postalCode);
         addressForm.selectCountryInField(country);
         addressForm.typePhoneIntoField(phone);
+    }
+    @Then("the user saves")
+    public void theUserSaves() {
+        AddressForm addressForm = new AddressForm(driver);
         addressForm.clickSaveButton();
     }
 
     @And("the page should display message {string}")
     public void thePageShouldDisplayMessage(String arg0) {
+        Addresses addresses = new Addresses(driver);
+        Assert.assertEquals(arg0,
+                addresses.addressAddedMessage());
     }
-
 }
