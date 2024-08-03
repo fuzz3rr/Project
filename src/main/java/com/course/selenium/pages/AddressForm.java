@@ -32,9 +32,6 @@ public class AddressForm {
     @FindBy (xpath = "//footer/button")
     WebElement saveButton;
 
-    @FindBy (xpath = "//ul/li[text()='Address successfully added!']")
-    WebElement successMessage;
-
 
     public AddressForm(WebDriver driver){
         this.driver = driver;

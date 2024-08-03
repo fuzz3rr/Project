@@ -11,6 +11,10 @@ public class MyAccount {
     @FindBy(id = "addresses-link")
     WebElement addressesButton;
 
+    @FindBy (xpath = "//img[contains(@alt, 'mystore-testlab.coderslab.pl')]")
+    WebElement returnToMainPageButton;
+
+
     public MyAccount(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -18,5 +22,9 @@ public class MyAccount {
 
     public void clickIntoAddresses(){
         addressesButton.click();
+    }
+
+    public void clickReturnToMainPage(){
+        returnToMainPageButton.click();
     }
 }
