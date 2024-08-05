@@ -3,7 +3,7 @@ Feature: Managing user addresses
   I want to add address
   So that I can book hotel
 
-  @done
+  @undone
   Scenario Outline: Add new user address
     Given the user is on the authentication page
     When the user types "<email>" and "<password>" and clicks sign in button
