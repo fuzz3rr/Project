@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import static com.course.selenium.helpers.Helpers.waitForElementVisible;
 import static com.course.selenium.helpers.Helpers.waitForElementToBeClickable;
-
-import java.security.Key;
 import java.util.Objects;
 
 public class ProductPage {
@@ -45,16 +43,17 @@ public class ProductPage {
         String expression = String.format("//option[text()='%s']", size);
         WebElement category = driver.findElement(By.xpath(expression));
         category.click();
+        waitForElementToBeClickable(driver, addToCartButton); //czeka az guzik bedzie odszarzony bo inacze parametryzacja produktu nie dziala
     }
 
     public void chooseQuantity(String quantity) {
         quantityField.click();
-        quantityField.sendKeys(Keys.BACK_SPACE); //clear nie dziala bo nie czysci pola
+        quantityField.sendKeys(Keys.HOME);
+        quantityField.sendKeys(Keys.DELETE); //clear nie dziala bo nie czysci pola
         quantityField.sendKeys(quantity);
     }
 
     public void addToCart(){
-        waitForElementToBeClickable(driver, addToCartButton); //czeka az guzik bedzie odszarzony
         addToCartButton.click();
     }
 

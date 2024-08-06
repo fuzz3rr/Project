@@ -49,13 +49,13 @@ public class ManageCartSteps {
     }
 
     @And("the uses chooses the amount {string} of product")
-    public void theUsesChoosesTheAmountOfProduct(String amount) {
+    public void theUsesChoosesTheAmountOfProduct(String amount) throws InterruptedException{
         productPage = new ProductPage(driver);
         productPage.chooseQuantity(amount);
     }
 
     @And("the user adds the products to a cart")
-    public void theUserAddsTheProductsToACart() throws InterruptedException{
+    public void theUserAddsTheProductsToACart() {
         productPage = new ProductPage(driver);
         productPage.addToCart();
     }
