@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MainPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy (xpath = "//img[contains(@alt, 'Brown bear printed sweater')]")
     WebElement hummingbirdSweater;

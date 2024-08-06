@@ -6,18 +6,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.sl.In;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+
 
 
 public class ManageCartSteps {
     private final WebDriver driver = BrowserFactory.getDriver();
 
-    HomePage homePage;
-    AuthPage authPage;
-    MyAccount myAccount;
     ProductPage productPage;
-    Cart cart;
+    Order order;
 
     @Given("the user is on the auth page")
     public void theUserIsOnTheAuthPage() {
@@ -50,7 +48,6 @@ public class ManageCartSteps {
         }
     }
 
-    //TODO poprawic parametryzacje i czyszczenie pola
     @And("the uses chooses the amount {string} of product")
     public void theUsesChoosesTheAmountOfProduct(String amount) {
         productPage = new ProductPage(driver);
@@ -73,25 +70,36 @@ public class ManageCartSteps {
     }
 
     @And("the user confirms the {string} and clicks continue")
-    public void theUserConfirmsTheAndClicksContinue(String address) throws InterruptedException{
+    public void theUserConfirmsTheAndClicksContinue(String address) {
         Order order = new Order(driver);
         order.selectAddress(address);
+        order.clickContinueToShipping();
     }
 
     @And("the user chooses pickup method")
     public void theUserChoosesPickupMethod() {
+        order = new Order(driver);
+        order.clickSelfPickUp();
+        order.clickContinueToPayment();
     }
 
     @And("the user chooses Pay by check")
     public void theUserChoosesPayByCheck() {
+        order = new Order(driver);
+        order.clickPayByCheck();
+        order.clickTermsOfService();
     }
 
     @Then("the user confirms the order")
     public void theUserConfirmsTheOrder() {
+        order = new Order(driver);
+        order.clickPlaceOrder();
     }
 
     @And("the page should show message {string}")
-    public void thePageShouldShowMessage(String arg0) {
+    public void thePageShouldShowMessage(String message) {
+        OrderConfirmation orderConfirmation = new OrderConfirmation(driver);
+        Assert.assertEquals(message, orderConfirmation.orderConfirmedMessageBanner());
     }
 
     @And("the script will take the screenshot of the order")

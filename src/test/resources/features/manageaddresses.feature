@@ -3,7 +3,7 @@ Feature: Managing user addresses
   I want to add address
   So that I can book hotel
 
-  @undone
+  @done
   Scenario Outline: Add new user address
     Given the user is on the authentication page
     When the user types "<email>" and "<password>" and clicks sign in button
@@ -15,5 +15,3 @@ Feature: Managing user addresses
     Examples:
       | email                        | password |alias | address | city | postalCode | country | phone |
       | ummdxgrujcboqmncgm@hthlm.com | 123321 |alias1 | address1 | city1 | postalCode1 | United Kingdom| 123123123   |
-
-

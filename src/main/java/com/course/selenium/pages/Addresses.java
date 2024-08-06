@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import static com.course.selenium.helpers.Helpers.waitForElementVisible;
 
+
 public class Addresses {
     private final WebDriver driver;
 

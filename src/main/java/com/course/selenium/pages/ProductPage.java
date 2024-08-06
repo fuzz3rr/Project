@@ -13,7 +13,7 @@ import java.security.Key;
 import java.util.Objects;
 
 public class ProductPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy (css = ".discount.discount-percentage")
     WebElement discount;
@@ -45,7 +45,6 @@ public class ProductPage {
         String expression = String.format("//option[text()='%s']", size);
         WebElement category = driver.findElement(By.xpath(expression));
         category.click();
-        waitForElementToBeClickable(driver, addToCartButton); //czeka az guzik bedzie odszarzony
     }
 
     public void chooseQuantity(String quantity) {
@@ -55,6 +54,7 @@ public class ProductPage {
     }
 
     public void addToCart(){
+        waitForElementToBeClickable(driver, addToCartButton); //czeka az guzik bedzie odszarzony
         addToCartButton.click();
     }
 

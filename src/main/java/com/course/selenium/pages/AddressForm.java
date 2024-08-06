@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
 
 public class AddressForm {
     private final WebDriver driver;
@@ -32,11 +31,11 @@ public class AddressForm {
     @FindBy (xpath = "//footer/button")
     WebElement saveButton;
 
-
     public AddressForm(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     public void typeAliasIntoForm(String alias){
         aliasField.click();
         aliasField.clear();

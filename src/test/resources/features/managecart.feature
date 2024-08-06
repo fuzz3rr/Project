@@ -16,7 +16,7 @@ Feature: Managing user cart
     And the user chooses pickup method
     And the user chooses Pay by check
     Then the user confirms the order
-    And the page should show message "Your order is confirmed"
+    And the page should show message "YOUR ORDER IS CONFIRMED"
     And the script will take the screenshot of the order
     Examples:
       | email                        | password | discount | size | amount | address |

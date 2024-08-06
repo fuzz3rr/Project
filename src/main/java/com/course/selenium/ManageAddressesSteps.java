@@ -13,9 +13,6 @@ import org.openqa.selenium.WebDriver;
 public class ManageAddressesSteps {
     private final WebDriver driver = BrowserFactory.getDriver();
 
-//    HomePage homePage;
-//    AuthPage authPage;
-//    MyAccount myAccount;
     Addresses addresses;
     AddressForm addressForm;
 
@@ -59,16 +56,14 @@ public class ManageAddressesSteps {
     }
     @Then("the user saves")
     public void theUserSaves() {
-        //AddressForm addressForm = new AddressForm(driver);
         addressForm = new AddressForm(driver);
         addressForm.clickSaveButton();
     }
 
     @And("the page should display message {string}")
-    public void thePageShouldDisplayMessage(String arg0) {
-        //Addresses addresses = new Addresses(driver);
+    public void thePageShouldDisplayMessage(String message) {
         addresses = new Addresses(driver);
-        Assert.assertEquals(arg0,
+        Assert.assertEquals(message,
                 addresses.addressAddedMessage());
     }
 
