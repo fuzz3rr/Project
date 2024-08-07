@@ -16,7 +16,7 @@ public class ManageCartSteps {
 
     ProductPage productPage;
     Order order;
-
+    OrderConfirmation orderConfirmation;
     @Given("the user is on the auth page")
     public void theUserIsOnTheAuthPage() {
         HomePage homePage = new HomePage(driver);
@@ -104,6 +104,8 @@ public class ManageCartSteps {
 
     @And("the script will take the screenshot of the order")
     public void theScriptWillTakeTheScreenshotOfTheOrder() {
+        orderConfirmation = new OrderConfirmation(driver);
+        orderConfirmation.takeScreenshot();
+        Assert.assertTrue(orderConfirmation.screenshotExist("images/screenshot.png"));
     }
-
 }
